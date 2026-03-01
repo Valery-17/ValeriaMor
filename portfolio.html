@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portafolio — Valeria Moreno</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="CSS/sitio.css">
+    <style>
+        .video-hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-mid) 60%, #3D0A28 100%);
+            border-radius: var(--radius);
+            padding: 36px 32px;
+            display: flex;
+            align-items: center;
+            gap: 28px;
+            margin-bottom: 32px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,77,141,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        .video-hero::before {
+            content: '';
+            position: absolute;
+            top: -60px; right: -60px;
+            width: 200px; height: 200px;
+            background: radial-gradient(circle, rgba(255,77,141,0.25), transparent 70%);
+            border-radius: 50%;
+        }
+        .video-hero-icon {
+            font-size: 4rem;
+            flex-shrink: 0;
+            filter: drop-shadow(0 0 20px rgba(255,77,141,0.6));
+            animation: pulse 3s ease-in-out infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+        }
+        .video-hero-text h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: white;
+            margin-bottom: 8px;
+        }
+        .video-hero-text p {
+            font-size: 0.88rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.7;
+        }
+
+        .software-section { margin-bottom: 32px; }
+        .software-section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--dark);
+            margin-bottom: 14px;
+        }
+        .software-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+        .sw-badge {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid rgba(255,77,141,0.2);
+            border-radius: 50px;
+            padding: 8px 16px;
+            box-shadow: 0 3px 12px rgba(255,77,141,0.1);
+            font-size: 0.83rem;
+            font-weight: 500;
+            color: var(--dark);
+            transition: all var(--transition);
+        }
+        .sw-badge:hover {
+            background: var(--pink-soft);
+            border-color: var(--pink-hot);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255,77,141,0.2);
+        }
+        .sw-badge span { font-size: 1.1rem; }
+
+        .skills-bars { margin-bottom: 32px; }
+        .skills-bars h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            color: var(--dark);
+            margin-bottom: 18px;
+        }
+        .skill-bar-item { margin-bottom: 16px; }
+        .skill-bar-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.83rem;
+            font-weight: 500;
+            color: var(--text);
+            margin-bottom: 6px;
+        }
+        .skill-bar-label span { color: var(--pink-hot); }
+        .skill-bar-track {
+            height: 8px;
+            background: var(--pink-soft);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .skill-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            background: linear-gradient(90deg, var(--pink-hot), var(--gold));
+            width: 0%;
+            transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 18px;
+        }
+        .portfolio-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,77,141,0.12);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all var(--transition);
+        }
+        .portfolio-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        .portfolio-card-img {
+            width: 100%;
+            height: 130px;
+            background: linear-gradient(135deg, var(--dark), var(--dark-mid));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+        }
+        .portfolio-card-body { padding: 16px; }
+        .portfolio-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.95rem;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+        .portfolio-card p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .portfolio-tag {
+            display: inline-block;
+            margin-top: 8px;
+            background: var(--pink-soft);
+            color: var(--pink-hot);
+            font-size: 0.68rem;
+            font-weight: 500;
+            padding: 3px 10px;
+            border-radius: 50px;
+        }
+
+        @media (max-width: 600px) {
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .video-hero { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decoration">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="wrapper">
+        <aside class="sidebar" id="sidebar">
+            <button class="sidebar-close" id="sidebarClose">✕</button>
+            <div class="profile-card">
+                <div class="avatar-ring">
+                    <img src="Resources/avatar.jpg" alt="Foto de Valeria" class="avatar"
+                         onerror="this.src='https://ui-avatars.com/api/?name=Valeria+Moreno&background=FF6B9D&color=fff&size=128&bold=true'"/>
+                </div>
+                <h1 class="profile-name">Valeria<br>Moreno Moreno</h1>
+                <span class="badge">✦ Estudiante ✦</span>
+                <div class="socials">
+                    <a href="https://facebook.com" target="_blank" class="social-btn" title="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" class="social-btn" title="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.97C18.88 4 12 4 12 4s-6.88 0-8.59.45A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.97C5.12 20 12 20 12 20s6.88 0 8.59-.45a2.78 2.78 0 001.95-1.97A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon fill="white" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" class="social-btn" title="Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <ul class="info-list">
+                <li><span class="info-icon">🎂</span><div><small>Cumpleaños</small><strong>17 de Septiembre</strong></div></li>
+                <li><span class="info-icon">📍</span><div><small>Ubicación</small><strong>Tetela de Ocampo, Pue.</strong></div></li>
+                <li><span class="info-icon">✉️</span><div><small>Correo</small><strong><a href="mailto:amoralesto@cobaep.edu.mx">valeriamoreno648@gmail.com</a></strong></div></li>
+                <li><span class="info-icon">📱</span><div><small>Teléfono</small><strong>+52 5534615430</strong></div></li>
+            </ul>
+            <a href="Resources/CV_Valeria.pdf" download class="btn-download">↓ Descargar CV</a>
+        </aside>
+
+        <main class="main" id="mainContent">
+            <nav class="navbar">
+                <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="portfolio.html" class="nav-link active">Portafolio</a></li>
+                    <li><a href="hobbies.html" class="nav-link">Hobbies</a></li>
+                </ul>
+            </nav>
+
+            <section class="section reveal">
+                <h2 class="section-title">Portafolio</h2>
+
+                <!-- Hero -->
+                <div class="video-hero">
+                    <div class="video-hero-icon">🎬</div>
+                    <div class="video-hero-text">
+                        <h3>Edición de Video</h3>
+                        <p>Me apasiona contar historias a través de la imagen y el sonido. Creo contenido visual con ritmo, color y emoción — desde reels hasta videos musicales y contenido para redes sociales.</p>
+                    </div>
+                </div>
+
+                <!-- Software -->
+                <div class="software-section reveal">
+                    <h3>🛠️ Herramientas que uso</h3>
+                    <div class="software-badges">
+                        <div class="sw-badge"><span>🎞️</span> Adobe Premiere Pro</div>
+                        <div class="sw-badge"><span>✨</span> After Effects</div>
+                        <div class="sw-badge"><span>🎨</span> CapCut</div>
+                        <div class="sw-badge"><span>🎵</span> Audacity</div>
+                        <div class="sw-badge"><span>📱</span> InShot</div>
+                        <div class="sw-badge"><span>🖼️</span> Canva</div>
+                    </div>
+                </div>
+
+                <!-- Barras de habilidad -->
+                <div class="skills-bars reveal">
+                    <h3>📈 Nivel de habilidad</h3>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-label">Corte y montaje <span>90%</span></div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="90"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-label">Efectos y transiciones <span>80%</span></div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="80"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-label">Corrección de color <span>75%</span></div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="75"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-label">Motion graphics <span>65%</span></div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="65"></div></div>
+                    </div>
+                    <div class="skill-bar-item">
+                        <div class="skill-bar-label">Edición de audio <span>70%</span></div>
+                        <div class="skill-bar-track"><div class="skill-bar-fill" data-width="70"></div></div>
+                    </div>
+                </div>
+
+                <!-- Tarjetas de tipo de contenido -->
+                <div class="reveal">
+                    <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; color:var(--dark); margin-bottom:16px;">🎥 Tipos de contenido</h3>
+                    <div class="portfolio-grid">
+                        <div class="portfolio-card">
+                            <div class="portfolio-card-img">📱</div>
+                            <div class="portfolio-card-body">
+                                <h3>Reels y Shorts</h3>
+                                <p>Videos cortos dinámicos para Instagram y YouTube con transiciones creativas y ritmo musical.</p>
+                                <span class="portfolio-tag">Instagram · YouTube</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card">
+                            <div class="portfolio-card-img">🎵</div>
+                            <div class="portfolio-card-body">
+                                <h3>Videos Musicales</h3>
+                                <p>Edición sincronizada al ritmo de la música con efectos visuales y paleta de colores definida.</p>
+                                <span class="portfolio-tag">Lyric video · MV</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card">
+                            <div class="portfolio-card-img">🎞️</div>
+                            <div class="portfolio-card-body">
+                                <h3>Videos de Eventos</h3>
+                                <p>Capturas de momentos especiales editadas con estilo cinematográfico y música de fondo.</p>
+                                <span class="portfolio-tag">Cinematografía</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-card">
+                            <div class="portfolio-card-img">✨</div>
+                            <div class="portfolio-card-body">
+                                <h3>Contenido Creativo</h3>
+                                <p>Edición estética con filtros, overlays y efectos visuales para contenido personal y artístico.</p>
+                                <span class="portfolio-tag">Aesthetic · Arte</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <footer class="footer">
+        <p>Diseñado con 💖 &nbsp;|&nbsp; Valeria Moreno Moreno &nbsp;|&nbsp; Autor: <em>Antonio Morales Tenorio</em></p>
+    </footer>
+
+    <script src="JS/site.js"></script>
+    <script>
+        const bars = document.querySelectorAll('.skill-bar-fill');
+        const barObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.width = entry.target.dataset.width + '%';
+                    barObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.3 });
+        bars.forEach(b => barObserver.observe(b));
+    </script>
+</body>
+</html>
